@@ -1,0 +1,138 @@
+/* =========================================================
+   Nimbus — estilos base
+   Tokens de diseño, reset y utilidades comunes
+   ========================================================= */
+
+:root {
+  --color-fondo: #0b1020;
+  --color-superficie: #121a33;
+  --color-superficie-2: #182246;
+  --color-borde: rgba(255, 255, 255, 0.10);
+  --color-texto: #e8ecf8;
+  --color-texto-suave: #a7b0cc;
+  --color-acento: #5b8cff;
+  --color-acento-claro: #8fb0ff;
+  --color-exito: #3ecf8e;
+
+  --radio: 14px;
+  --radio-peque: 9px;
+  --sombra: 0 18px 40px rgba(0, 0, 0, 0.35);
+  --contenedor: 1120px;
+  --espaciado: clamp(3.5rem, 8vw, 6.5rem);
+
+  --fuente: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+h1, h2, h3 {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Utilidades ---------- */
+
+.contenedor {
+  width: min(100% - 2.5rem, var(--contenedor));
+  margin-inline: auto;
+}
+
+.seccion {
+  padding-block: var(--espaciado);
+}
+
+.encabezado-seccion {
+  max-width: 44rem;
+  margin-inline: auto;
+  text-align: center;
+  margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+.encabezado-seccion h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.encabezado-seccion p {
+  color: var(--color-texto-suave);
+  font-size: 1.0625rem;
+}
+
+/* ---------- Accesibilidad ---------- */
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 200;
+  background: var(--color-acento);
+  color: #fff;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radio-peque);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-acento-claro);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
