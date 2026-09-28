@@ -3,8 +3,12 @@
  * Módulos:
  *  - navegación móvil (feature/header)
  *  - año dinámico del pie (feature/footer)
- *  - revelado al hacer scroll (feature/responsive)
+ *  - revelado al hacer scroll, enlace activo y sombra de cabecera (feature/responsive)
  */
+
+// Señala que JavaScript está disponible para que el contenido
+// solo se oculte si de verdad se va a animar.
+document.documentElement.classList.add("js");
 
 /** Menú móvil de la cabecera. */
 function initNavMovil() {
@@ -79,6 +83,105 @@ function initAnioPie() {
   if (destino) destino.textContent = String(new Date().getFullYear());
 }
 
+/** Sombra progresiva en la cabecera al hacer scroll. */
+function initSombraCabecera() {
+  const cabecera = document.querySelector(".cabecera");
+  if (!cabecera) return;
+
+  let enCola = false;
+  const actualizar = () => {
+    cabecera.dataset.scrolled = String(window.scrollY > 8);
+    enCola = false;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!enCola) {
+        enCola = true;
+        window.requestAnimationFrame(actualizar);
+      }
+    },
+    { passive: true }
+  );
+
+  actualizar();
+}
+
+/** Marca como activo el enlace de la sección visible. */
+function initEnlaceActivo() {
+  const enlaces = [...document.querySelectorAll(".nav__enlace")];
+  const secciones = enlaces
+    .map((enlace) => document.querySelector(enlace.getAttribute("href")))
+    .filter(Boolean);
+
+  if (!secciones.length || !("IntersectionObserver" in window)) return;
+
+  const visibles = new Map();
+
+  const observador = new IntersectionObserver(
+    (entradas) => {
+      entradas.forEach((entrada) => visibles.set(entrada.target, entrada.intersectionRatio));
+
+      const mejor = [...visibles.entries()]
+        .filter(([, ratio]) => ratio > 0)
+        .sort((a, b) => b[1] - a[1])[0];
+
+      enlaces.forEach((enlace) => enlace.removeAttribute("aria-current"));
+      if (mejor) {
+        const activo = enlaces.find(
+          (enlace) => enlace.getAttribute("href") === `#${mejor[0].id}`
+        );
+        if (activo) activo.setAttribute("aria-current", "true");
+      }
+    },
+    { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] }
+  );
+
+  secciones.forEach((seccion) => observador.observe(seccion));
+}
+
+/** Revela cada bloque la primera vez que entra en pantalla. */
+function initReveladoScroll() {
+  const objetivos = [
+    ...document.querySelectorAll(
+      ".encabezado-seccion, .tarjeta, .paso, .plan, .testimonio, .cta__caja, .hero__visual"
+    ),
+  ];
+  if (!objetivos.length) return;
+
+  const sinAnimacion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (sinAnimacion || !("IntersectionObserver" in window)) return;
+
+  objetivos.forEach((elemento) => {
+    elemento.classList.add("revelar");
+    const hermanos = [...elemento.parentElement.children].filter((h) =>
+      h.classList.contains(elemento.classList[0])
+    );
+    const posicion = hermanos.indexOf(elemento);
+    if (posicion > 0) {
+      elemento.style.transitionDelay = `${Math.min(posicion * 80, 320)}ms`;
+    }
+  });
+
+  const observador = new IntersectionObserver(
+    (entradas, obs) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add("visible");
+          obs.unobserve(entrada.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+  );
+
+  objetivos.forEach((elemento) => observador.observe(elemento));
+}
+
 document.addEventListener("DOMContentLoaded", initNavMovil);
 document.addEventListener("DOMContentLoaded", initFormularioCta);
 document.addEventListener("DOMContentLoaded", initAnioPie);
+document.addEventListener("DOMContentLoaded", initSombraCabecera);
+document.addEventListener("DOMContentLoaded", initEnlaceActivo);
+document.addEventListener("DOMContentLoaded", initReveladoScroll);
