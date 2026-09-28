@@ -544,3 +544,100 @@ h1, h2, h3 {
     transform: none;
   }
 }
+
+/* =========================================================
+   Funcionalidades (rejilla de tarjetas)
+   ========================================================= */
+
+.funcionalidades {
+  background: linear-gradient(180deg, transparent, rgba(18, 26, 51, 0.55) 45%, transparent);
+}
+
+.rejilla-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.35rem;
+}
+
+.tarjeta {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 1.75rem 1.5rem;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+  border-color: rgba(143, 176, 255, 0.45);
+  box-shadow: var(--sombra);
+}
+
+.tarjeta__icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.1rem;
+  background: rgba(91, 140, 255, 0.16);
+  border: 1px solid rgba(143, 176, 255, 0.32);
+  border-radius: var(--radio-peque);
+  color: var(--color-acento-claro);
+}
+
+.tarjeta__icono svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.tarjeta h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.tarjeta p {
+  color: var(--color-texto-suave);
+  font-size: 0.97rem;
+}
+
+/* =========================================================
+   Cómo funciona (pasos)
+   ========================================================= */
+
+.pasos__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.5rem;
+}
+
+.paso {
+  position: relative;
+  padding: 1.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.paso__numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.9rem;
+  background: linear-gradient(135deg, var(--color-acento), #7b5bff);
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+}
+
+.paso h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.paso p {
+  color: var(--color-texto-suave);
+  font-size: 0.95rem;
+}
