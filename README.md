@@ -11,11 +11,38 @@ Landing page de producto construida con **HTML, CSS y JavaScript puro** (sin dep
 
 ```
 mi-pagina-web/
-├── index.html      # página completa
-├── css/styles.css  # estilos
-├── js/main.js      # interacciones
+├── index.html      # página completa (HTML semántico)
+├── css/styles.css  # tokens, utilidades y estilos por sección
+├── js/main.js      # menú móvil, formulario, año, revelado al scroll
 └── README.md
 ```
+
+## Secciones de la página
+
+| Sección | Ancla | Rama que la introdujo |
+|---|---|---|
+| Cabecera y navegación | `#inicio` | `feature/header` |
+| Hero | `#hero` | `feature/hero` |
+| Funcionalidades y cómo funciona | `#funcionalidades`, `#como-funciona` | `feature/funcionalidades` |
+| Precios | `#precios` | `feature/precios` |
+| Testimonios | `#testimonios` | `feature/footer` |
+| Llamada a la acción (formulario) | `#cta` | `feature/precios` |
+| Pie de página | — | `feature/footer` |
+| Revelado, enlace activo, responsive | — | `feature/responsive` |
+
+## Cómo verla
+
+```bash
+# opción 1: abrir directamente index.html en el navegador
+# opción 2: servidor estático local
+python -m http.server 8123   # y visitar http://127.0.0.1:8123
+```
+
+### Comprobaciones rápidas
+
+- Redimensionar la ventana: el menú se convierte en hamburguesa por debajo de 860 px.
+- Rellenar el formulario con un correo inválido: muestra un mensaje de error en `aria-live`.
+- Tabular con el teclado: el enlace de "saltar al contenido" y los focos son visibles.
 
 ## Flujo de trabajo del repositorio
 
