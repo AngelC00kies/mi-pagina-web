@@ -73,5 +73,12 @@ function initFormularioCta() {
   });
 }
 
+/** Año dinámico en la línea de copyright del pie. */
+function initAnioPie() {
+  const destino = document.getElementById("anio-actual");
+  if (destino) destino.textContent = String(new Date().getFullYear());
+}
+
 document.addEventListener("DOMContentLoaded", initNavMovil);
 document.addEventListener("DOMContentLoaded", initFormularioCta);
+document.addEventListener("DOMContentLoaded", initAnioPie);

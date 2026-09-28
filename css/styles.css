@@ -836,3 +836,133 @@ h1, h2, h3 {
     width: 100%;
   }
 }
+
+/* =========================================================
+   Testimonios
+   ========================================================= */
+
+.testimonios__rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1.35rem;
+}
+
+.testimonio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 1.75rem 1.6rem;
+}
+
+.testimonio blockquote p {
+  font-size: 1.02rem;
+  color: var(--color-texto);
+}
+
+.testimonio__autor {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.testimonio__iniciales {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--color-acento), #7b5bff);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.testimonio__autor strong {
+  display: block;
+  font-size: 0.98rem;
+}
+
+.testimonio__autor small {
+  color: var(--color-texto-suave);
+  font-size: 0.86rem;
+}
+
+/* =========================================================
+   Pie de página
+   ========================================================= */
+
+.pie {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  background: var(--color-superficie);
+  border-top: 1px solid var(--color-borde);
+}
+
+.pie__rejilla {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: clamp(1.75rem, 4vw, 3rem);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+.pie__marca p {
+  margin-top: 0.9rem;
+  color: var(--color-texto-suave);
+  font-size: 0.95rem;
+  max-width: 22rem;
+}
+
+.pie__columna h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--color-texto);
+  margin-bottom: 0.95rem;
+}
+
+.pie__columna ul {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.pie__columna a {
+  color: var(--color-texto-suave);
+  font-size: 0.95rem;
+  transition: color 0.18s ease;
+}
+
+.pie__columna a:hover {
+  color: var(--color-acento-claro);
+}
+
+.pie__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-block: 1.35rem;
+  border-top: 1px solid var(--color-borde);
+  color: var(--color-texto-suave);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 860px) {
+  .pie__rejilla {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pie__marca {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .pie__rejilla {
+    grid-template-columns: 1fr;
+  }
+}
