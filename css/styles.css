@@ -966,3 +966,71 @@ h1, h2, h3 {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================
+   Microinteracciones y accesibilidad móvil
+   ========================================================= */
+
+.cabecera[data-scrolled="true"] {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* El contenido solo se oculta si JS está activo y hay animación. */
+.js .revelar {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  will-change: opacity, transform;
+}
+
+.js .revelar.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Zonas de toque cómodas en pantallas pequeñas */
+@media (pointer: coarse) {
+  .nav__enlace,
+  .pie__columna a,
+  .btn {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .pie__columna a {
+    display: block;
+    padding-block: 0.3rem;
+  }
+}
+
+/* Tipografía mínima legible en móviles muy estrechos */
+@media (max-width: 360px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Impresión: fondo claro y sin animaciones */
+@media print {
+  .cabecera,
+  .hero__fondo,
+  .cta__formulario,
+  .nav__alternar {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+  }
+
+  .js .revelar {
+    opacity: 1;
+    transform: none;
+  }
+}
