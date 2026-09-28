@@ -1,5 +1,7 @@
 # Nimbus — Landing page
 
+[Ver en GitHub](https://github.com/AngelC00kies/mi-pagina-web)
+
 Landing page de producto construida con **HTML, CSS y JavaScript puro** (sin dependencias ni paso de build).
 
 ## Requisitos
