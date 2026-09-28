@@ -215,9 +215,92 @@
         </ol>
       </div>
     </section>
-    <!-- feature: precios -->
+    <section class="precios seccion" id="precios">
+      <div class="contenedor">
+        <header class="encabezado-seccion">
+          <h2>Precios claros, sin sorpresas</h2>
+          <p>
+            Empieza gratis y sube de plan cuando tu equipo lo necesite. Todos
+            los planes incluyen soporte en español.
+          </p>
+        </header>
+
+        <ul class="planes">
+          <li class="plan">
+            <h3 class="plan__nombre">Free</h3>
+            <p class="plan__precio"><span>0 €</span> / mes</p>
+            <p class="plan__nota">Para personas y equipos de hasta 3.</p>
+            <a class="btn btn--secundario plan__boton" href="#cta">Crear cuenta</a>
+            <ul class="plan__lista">
+              <li>Hasta 3 proyectos</li>
+              <li>1 GB de almacenamiento</li>
+              <li>Tableros y listas básicas</li>
+              <li>Comunidad de ayuda</li>
+            </ul>
+          </li>
+
+          <li class="plan plan--destacado">
+            <span class="plan__banda">Más elegido</span>
+            <h3 class="plan__nombre">Pro</h3>
+            <p class="plan__precio"><span>9 €</span> / usuario / mes</p>
+            <p class="plan__nota">Para equipos que crecen rápido.</p>
+            <a class="btn btn--primario plan__boton" href="#cta">Probar 14 días</a>
+            <ul class="plan__lista">
+              <li>Proyectos ilimitados</li>
+              <li>100 GB de almacenamiento</li>
+              <li>Automatizaciones e informes</li>
+              <li>Integraciones con GitHub y Slack</li>
+              <li>Soporte en 4 horas hábiles</li>
+            </ul>
+          </li>
+
+          <li class="plan">
+            <h3 class="plan__nombre">Empresa</h3>
+            <p class="plan__precio"><span>A medida</span></p>
+            <p class="plan__nota">Para organizaciones con requisitos propios.</p>
+            <a class="btn btn--secundario plan__boton" href="#cta">Hablar con ventas</a>
+            <ul class="plan__lista">
+              <li>Todo lo de Pro</li>
+              <li>SSO y auditoría</li>
+              <li>Almacenamiento ilimitado</li>
+              <li>Gestor de cuenta dedicado</li>
+              <li>Acuerdo de nivel de servicio (SLA)</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
     <!-- feature: testimonios -->
-    <!-- feature: cta -->
+    <section class="cta seccion" id="cta">
+      <div class="contenedor">
+        <div class="cta__caja">
+          <div class="cta__texto">
+            <h2>Empieza hoy mismo, es gratis</h2>
+            <p>
+              Déjanos tu correo y te enviamos el enlace para crear tu espacio.
+              Sin tarjeta y sin compromiso.
+            </p>
+          </div>
+
+          <form class="cta__formulario" id="formulario-cta" novalidate>
+            <label class="visually-hidden" for="correo-cta">
+              Correo electrónico de trabajo
+            </label>
+            <input
+              class="cta__entrada"
+              type="email"
+              id="correo-cta"
+              name="correo"
+              placeholder="tu@empresa.com"
+              autocomplete="email"
+              required
+            >
+            <button class="btn btn--primario" type="submit">Quiero mi cuenta</button>
+            <p class="cta__mensaje" id="mensaje-cta" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- feature: footer -->

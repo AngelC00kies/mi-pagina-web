@@ -641,3 +641,198 @@ h1, h2, h3 {
   color: var(--color-texto-suave);
   font-size: 0.95rem;
 }
+
+/* =========================================================
+   Precios
+   ========================================================= */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.planes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+  gap: 1.35rem;
+  align-items: start;
+}
+
+.plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 2rem 1.6rem;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.plan:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra);
+}
+
+.plan--destacado {
+  background: linear-gradient(180deg, var(--color-superficie-2), var(--color-superficie));
+  border-color: rgba(143, 176, 255, 0.55);
+  box-shadow: 0 20px 45px rgba(91, 140, 255, 0.22);
+}
+
+.plan__banda {
+  position: absolute;
+  top: -0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--color-acento), #7b5bff);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.plan__nombre {
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-texto-suave);
+}
+
+.plan__precio {
+  margin: 0.85rem 0 0.35rem;
+  font-size: 1rem;
+  color: var(--color-texto-suave);
+}
+
+.plan__precio span {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  letter-spacing: -0.03em;
+}
+
+.plan__nota {
+  color: var(--color-texto-suave);
+  font-size: 0.92rem;
+  margin-bottom: 1.35rem;
+}
+
+.plan__boton {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.plan__lista {
+  display: grid;
+  gap: 0.7rem;
+  border-top: 1px solid var(--color-borde);
+  padding-top: 1.35rem;
+}
+
+.plan__lista li {
+  position: relative;
+  padding-left: 1.7rem;
+  color: var(--color-texto-suave);
+  font-size: 0.95rem;
+}
+
+.plan__lista li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-exito);
+  font-weight: 700;
+}
+
+/* =========================================================
+   Llamada a la acción final
+   ========================================================= */
+
+.cta__caja {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  padding: clamp(2rem, 5vw, 3.25rem);
+  background:
+    radial-gradient(70% 100% at 0% 0%, rgba(91, 140, 255, 0.3), transparent 65%),
+    var(--color-superficie);
+  border: 1px solid rgba(143, 176, 255, 0.35);
+  border-radius: calc(var(--radio) + 6px);
+  box-shadow: var(--sombra);
+}
+
+.cta__texto h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  margin-bottom: 0.7rem;
+}
+
+.cta__texto p {
+  color: var(--color-texto-suave);
+}
+
+.cta__formulario {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.7rem;
+}
+
+.cta__entrada {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(11, 16, 32, 0.75);
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  color: var(--color-texto);
+  font-size: 1rem;
+}
+
+.cta__entrada::placeholder {
+  color: #6f7999;
+}
+
+.cta__entrada:focus-visible {
+  border-color: var(--color-acento-claro);
+}
+
+.cta__entrada[aria-invalid="true"] {
+  border-color: #ff7b72;
+}
+
+.cta__mensaje {
+  grid-column: 1 / -1;
+  min-height: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.cta__mensaje[data-estado="ok"] {
+  color: var(--color-exito);
+}
+
+.cta__mensaje[data-estado="error"] {
+  color: #ff7b72;
+}
+
+@media (max-width: 780px) {
+  .cta__caja,
+  .cta__formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .cta__formulario .btn {
+    width: 100%;
+  }
+}

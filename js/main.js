@@ -39,4 +39,39 @@ function initNavMovil() {
   ancho.addEventListener("change", () => abrir(false));
 }
 
+/** Validación y confirmación del formulario de la llamada final. */
+function initFormularioCta() {
+  const formulario = document.getElementById("formulario-cta");
+  if (!formulario) return;
+
+  const entrada = document.getElementById("correo-cta");
+  const mensaje = document.getElementById("mensaje-cta");
+  const patron = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  const mostrar = (texto, estado) => {
+    mensaje.textContent = texto;
+    mensaje.dataset.estado = estado;
+    entrada.setAttribute("aria-invalid", String(estado === "error"));
+  };
+
+  formulario.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    const correo = entrada.value.trim();
+
+    if (!patron.test(correo)) {
+      mostrar("Introduce un correo válido, por ejemplo nombre@empresa.com.", "error");
+      entrada.focus();
+      return;
+    }
+
+    mostrar(`¡Listo! Hemos enviado el acceso a ${correo}.`, "ok");
+    formulario.reset();
+  });
+
+  entrada.addEventListener("input", () => {
+    if (mensaje.dataset.estado === "error") mostrar("", "");
+  });
+}
+
 document.addEventListener("DOMContentLoaded", initNavMovil);
+document.addEventListener("DOMContentLoaded", initFormularioCta);
